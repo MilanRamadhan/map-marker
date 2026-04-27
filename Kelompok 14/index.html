@@ -1,95 +1,150 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Map Marker — Kelompok 14</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Map Marker — Kelompok 14</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
 
-  <body>
-    <div id="header">
-      <h1>Map Marker — Kelompok 14</h1>
-      <span id="total-marker">Loading...</span>
-    </div>
+<body>
 
-    <div id="lokasi-panel">
-      <div class="lokasi-title">Pergi ke Titik</div>
-      <div id="lokasi-buttons"></div>
-    </div>
+<div id="header">
+  <h1>Map Marker — Kelompok 14</h1>
+  <span id="total-marker">Loading...</span>
+</div>
 
-    <div id="map"></div>
+<div id="lokasi-panel">
+  <div class="lokasi-title">Daftar Lokasi</div>
+  <div id="lokasi-buttons"></div>
+</div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="marker.js"></script>
+<div id="legend-panel">
+  <div class="legend-title">Keterangan Marker</div>
+  <div class="legend-item"><span class="legend-color marker-sekolah">🏫</span> Sekolah (Biru)</div>
+  <div class="legend-item"><span class="legend-color marker-masjid">🕌</span> Masjid (Hijau)</div>
+  <div class="legend-item"><span class="legend-color marker-umum">🏞️</span> Tempat Umum (Kuning)</div>
+</div>
 
-    <script>
-      const map = L.map("map", {
-        zoomControl: false, // matikan zoom control default (kiri atas)
-      }).setView([5.5483, 95.3238], 13);
+<div id="map"></div>
 
-      // Tambahkan kembali zoom control di posisi kanan bawah agar tidak tertutup panel
-      L.control
-        .zoom({
-          position: "bottomright",
-        })
-        .addTo(map);
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="marker.js"></script>
 
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap",
-      }).addTo(map);
+<script>
+const map = L.map("map", { zoomControl: false }).setView([5.5483, 95.3238], 13);
+L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-      const warna = {
-        milan: "#e67e22",
-        halim: "#9b59b6",
-        reyan: "#1abc9c",
-      };
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
-      const daftarLokasi = [];
+const daftarLokasi = [];
 
-      function buatIkon(warna) {
-        return L.divIcon({
-          html: `<div style="width:14px;height:14px;background:${warna};border-radius:50%;border:2px solid white;"></div>`,
-          iconSize: [14, 14],
-        });
-      }
+function buatIkon(kategori) {
+  let icon = "📍";
+  let bgClass = "marker-umum";
 
-      function tambahMarkers(data, warnaDot, nama) {
-        data.forEach((item) => {
-          const marker = L.marker([item.lat, item.lng], {
-            icon: buatIkon(warnaDot),
-          })
-            .addTo(map)
-            .bindPopup(`<b>${item.nama}</b><br>${item.deskripsi}`);
+  if (kategori === "sekolah") {
+    icon = "🏫";
+    bgClass = "marker-sekolah";
+  } else if (kategori === "masjid") {
+    icon = "🕌";
+    bgClass = "marker-masjid";
+  } else if (kategori === "umum") {
+    icon = "🏞️";
+    bgClass = "marker-umum";
+  }
 
-          daftarLokasi.push({ ...item, marker, kontributor: nama });
-        });
-      }
+  return L.divIcon({
+    html: `<div class="custom-marker ${bgClass}">${icon}</div>`,
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
+    className: ""
+  });
+}
 
-      // Panggil data dari marker.js
-      tambahMarkers(markersMilan, warna.milan, "Milan");
-      tambahMarkers(markersHalim, warna.halim, "Halim");
-      tambahMarkers(markersReyan, warna.reyan, "Reyan");
+function tambahMarkers(data, nama) {
+  data.forEach(item => {
+    const marker = L.marker([item.lat, item.lng], {
+      icon: buatIkon(item.kategori)
+    }).addTo(map)
+    .bindPopup(`
+      <b>${item.nama}</b><br>
+      ${item.deskripsi}<br>
+      <i>Kategori: ${item.kategori}</i><br>
+      <small>oleh ${nama}</small>
+    `);
 
-      // Total marker
-      const total = markersMilan.length + markersHalim.length + markersReyan.length;
+    daftarLokasi.push({ ...item, marker, kontributor: nama });
+  });
+}
 
-      document.getElementById("total-marker").textContent = total + " lokasi";
+// Tambah semua data
+tambahMarkers(markersMilan, "Milan");
+tambahMarkers(markersHalim, "Halim");
+tambahMarkers(markersReyan, "Reyan");
 
-      // Tombol navigasi
-      const container = document.getElementById("lokasi-buttons");
+// TOTAL
+const total =
+  markersMilan.length +
+  markersHalim.length +
+  markersReyan.length;
 
-      daftarLokasi.forEach((lokasi) => {
-        const btn = document.createElement("button");
-        btn.textContent = lokasi.nama + " (" + lokasi.kontributor + ")";
-        btn.onclick = () => {
-          map.flyTo([lokasi.lat, lokasi.lng], 15);
-          lokasi.marker.openPopup();
-        };
-        container.appendChild(btn);
-      });
-    </script>
-  </body>
+document.getElementById("total-marker").textContent = total + " lokasi";
+
+// LIST BUTTON
+const container = document.getElementById("lokasi-buttons");
+
+let userLocation = null;
+let currentRoute = null;
+
+function buatRuteKeLokasi(latTujuan, lngTujuan) {
+  if (userLocation) {
+    if (currentRoute) {
+      map.removeLayer(currentRoute); // Hapus rute sebelumnya
+    }
+    // Buat garis rute baru dari lokasi saya ke tujuan
+    currentRoute = L.polyline([userLocation, [latTujuan, lngTujuan]], {
+      color: 'blue', 
+      weight: 4,
+      dashArray: '10, 10' // Supaya garisnya putus-putus
+    }).addTo(map);
+  }
+}
+
+daftarLokasi.forEach(lokasi => {
+  const btn = document.createElement("button");
+  btn.textContent = lokasi.nama + " (" + lokasi.kontributor + ")";
+  
+  // Aksi saat tombol ditekan
+  btn.onclick = () => {
+    map.flyTo([lokasi.lat, lokasi.lng], 16);
+    lokasi.marker.openPopup();
+    buatRuteKeLokasi(lokasi.lat, lokasi.lng);
+  };
+
+  // Aksi saat marker di peta ditekan
+  lokasi.marker.on('click', () => {
+    buatRuteKeLokasi(lokasi.lat, lokasi.lng);
+  });
+
+  container.appendChild(btn);
+});
+
+// LOKASI SAYA
+navigator.geolocation.getCurrentPosition(pos => {
+  const lat = pos.coords.latitude;
+  const lng = pos.coords.longitude;
+  userLocation = [lat, lng];
+
+  L.marker(userLocation)
+    .addTo(map)
+    .bindPopup("📍 Lokasi Saya")
+    .openPopup();
+});
+
+</script>
+
+</body>
 </html>

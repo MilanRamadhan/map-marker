@@ -104,6 +104,11 @@ body {
   border: 1px solid #ccc;
 }
 
+/* Menghilangkan panel instruksi default dari library Leaflet Routing Machine */
+.leaflet-routing-container {
+  display: none !important;
+}
+
 button {
   display: block;
   margin: 5px 0;

@@ -1,33 +1,99 @@
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #map {
   height: 100vh;
+  z-index: 0;
 }
 
 #header {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: white;
-  padding: 10px;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px 25px;
   z-index: 1000;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#header h1 {
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+#total-marker {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  font-weight: 600;
 }
 
 #lokasi-panel {
   position: absolute;
-  top: 80px;
-  left: 10px;
-  background: white;
-  padding: 10px;
+  top: 100px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
   z-index: 1000;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  width: 250px;
 }
 
-button {
+.lokasi-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #34495e;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 8px;
+}
+
+#lokasi-buttons button {
   display: block;
-  margin: 5px 0;
+  width: 100%;
+  text-align: left;
+  margin: 8px 0;
+  padding: 10px 12px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+#lokasi-buttons button:hover {
+  background: #3498db;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+  border-color: #3498db;
+}
+
+/* Custom scrollbar untuk panel lokasi */
+#lokasi-panel::-webkit-scrollbar {
+  width: 6px;
+}
+#lokasi-panel::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+#lokasi-panel::-webkit-scrollbar-thumb {
+  background: #bdc3c7;
+  border-radius: 4px;
+}
+#lokasi-panel::-webkit-scrollbar-thumb:hover {
+  background: #95a5a6;
 }

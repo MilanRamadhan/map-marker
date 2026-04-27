@@ -1,29 +1,47 @@
-// Data Milan
+// Data Milan (Sekolah)
 const markersMilan = [
   {
-    nama: "SMAN 1 Sigli",
-    lat: 5.384,
-    lng: 95.96,
+    nama: "SMAN 3 Banda Aceh",
+    lat: 5.5485,
+    lng: 95.3235,
+    deskripsi: "Sekolah unggulan di Banda Aceh",
+  },
+  {
+    nama: "SMAN 1 Banda Aceh",
+    lat: 5.5562,
+    lng: 95.3176,
     deskripsi: "Sekolah favorit",
   },
 ];
 
-// Data Halim
+// Data Halim (Masjid)
 const markersHalim = [
   {
-    nama: "Masjid Agung Sigli",
-    lat: 5.383,
-    lng: 95.958,
-    deskripsi: "Tempat ibadah",
+    nama: "Masjid Raya Baiturrahman",
+    lat: 5.5539,
+    lng: 95.317,
+    deskripsi: "Masjid ikonik Banda Aceh",
+  },
+  {
+    nama: "Masjid Oman Al-Makmur",
+    lat: 5.55,
+    lng: 95.33,
+    deskripsi: "Masjid modern",
   },
 ];
 
-// Data Reyan
+// Data Reyan (Tempat umum)
 const markersReyan = [
   {
-    nama: "Alun-alun Sigli",
-    lat: 5.382,
-    lng: 95.959,
-    deskripsi: "Tempat santai",
+    nama: "Taman Sari",
+    lat: 5.553,
+    lng: 95.3175,
+    deskripsi: "Tempat rekreasi",
+  },
+  {
+    nama: "Museum Tsunami Aceh",
+    lat: 5.5463,
+    lng: 95.3157,
+    deskripsi: "Museum bersejarah",
   },
 ];

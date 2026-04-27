@@ -26,7 +26,16 @@
     <script src="marker.js"></script>
 
     <script>
-      const map = L.map("map").setView([5.38, 95.96], 10);
+      const map = L.map("map", {
+        zoomControl: false, // matikan zoom control default (kiri atas)
+      }).setView([5.5483, 95.3238], 13);
+
+      // Tambahkan kembali zoom control di posisi kanan bawah agar tidak tertutup panel
+      L.control
+        .zoom({
+          position: "bottomright",
+        })
+        .addTo(map);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap",

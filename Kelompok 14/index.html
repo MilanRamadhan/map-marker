@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Map Marker — Kelompok 4</title>
+    <title>Map Marker — Kelompok 14</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -78,11 +78,11 @@
         });
       }
 
-      tambahMarkers(markersDiki, warna.diki, "Diki");
-      tambahMarkers(markersDayat, warna.dayat, "Dayat");
-      tambahMarkers(markersMirdas, warna.mirdas, "Amirul Mirdas");
-      tambahMarkers(markersGudang, warna.gudang, "Amirul Mirdas");
-      tambahMarkers(markersKampus, warna.kampus, "Diki");
+      tambahMarkers(markersMilan, warna.diki, "Milan");
+      tambahMarkers(markersHalim, warna.dayat, "Halim");
+      tambahMarkers(markersReyan, warna.mirdas, "Reyan");
+      tambahMarkers(markersGudang, warna.gudang, "Gudang");
+      tambahMarkers(markersKampus, warna.kampus, "Kampus");
 
       function renderLokasiButtons() {
         const container = document.getElementById("lokasi-buttons");
@@ -118,13 +118,13 @@
         div.innerHTML = `
       <div class="legend-title">Kontributor</div>
       <div class="legend-item">
-        <div class="legend-dot" style="background:${warna.Halim}"></div> Diki (${markersDiki.length})
+        <div class="legend-dot" style="background:${warna.Halim}"></div> Halim (${markersHalim.length})
       </div>
       <div class="legend-item">
-        <div class="legend-dot" style="background:${warna.Reyan}"></div> Dayat (${markersDayat.length})
+        <div class="legend-dot" style="background:${warna.Reyan}"></div> Reyan (${markersReyan.length})
       </div>
       <div class="legend-item">
-        <div class="legend-dot" style="background:${warna.Milan}"></div> Mirdas (${markersMirdas.length})
+        <div class="legend-dot" style="background:${warna.Milan}"></div> Milan (${markersMilan.length})
       </div>
       <div class="legend-item">
         <div class="legend-dot" style="background:${warna.gudang}"></div> Gudang (${markersGudang.length})

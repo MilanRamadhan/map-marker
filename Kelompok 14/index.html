@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Map Marker — Kelompok 14</title>
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <div id="header">
-      <h1>Map Marker — Kelompok 4</h1>
+      <h1>Map Marker — Kelompok 14</h1>
       <span id="total-marker">Loading...</span>
     </div>
 
@@ -21,121 +23,64 @@
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <script src="maker.js"></script>
+    <script src="marker.js"></script>
 
     <script>
-      const map = L.map("map").setView([5.0, 96.5], 8);
+      const map = L.map("map").setView([5.38, 95.96], 10);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: 19,
+        attribution: "© OpenStreetMap",
       }).addTo(map);
 
       const warna = {
-        diki: "#e67e22",
-        dayat: "#9b59b6",
-        mirdas: "#1abc9c",
-        gudang: "#e74c3c",
-        kampus: "#e67e22",
+        milan: "#e67e22",
+        halim: "#9b59b6",
+        reyan: "#1abc9c",
       };
 
       const daftarLokasi = [];
 
       function buatIkon(warna) {
         return L.divIcon({
-          className: "",
-          html: `<div style="
-        width:14px; height:14px;
-        background:${warna};
-        border:2px solid white;
-        border-radius:50%;
-        box-shadow:0 1px 4px rgba(0,0,0,0.4);
-      "></div>`,
+          html: `<div style="width:14px;height:14px;background:${warna};border-radius:50%;border:2px solid white;"></div>`,
           iconSize: [14, 14],
-          iconAnchor: [7, 7],
         });
       }
 
-      function tambahMarkers(data, warnaDot, namaAnggota) {
-        data.forEach(function (item) {
+      function tambahMarkers(data, warnaDot, nama) {
+        data.forEach((item) => {
           const marker = L.marker([item.lat, item.lng], {
             icon: buatIkon(warnaDot),
-          }).addTo(map).bindPopup(`
-          <b>${item.nama}</b><br>
-          <span style="color:#666;font-size:12px">${item.deskripsi || ""}</span><br>
-          <span style="color:#999;font-size:11px">oleh: ${namaAnggota}</span><br>
-          <span style="color:#999;font-size:11px">${item.lat}, ${item.lng}</span>
-        `);
+          })
+            .addTo(map)
+            .bindPopup(`<b>${item.nama}</b><br>${item.deskripsi}`);
 
-          daftarLokasi.push({
-            nama: item.nama,
-            lat: item.lat,
-            lng: item.lng,
-            kontributor: namaAnggota,
-            marker,
-          });
+          daftarLokasi.push({ ...item, marker, kontributor: nama });
         });
       }
 
-      tambahMarkers(markersMilan, warna.diki, "Milan");
-      tambahMarkers(markersHalim, warna.dayat, "Halim");
-      tambahMarkers(markersReyan, warna.mirdas, "Reyan");
-      tambahMarkers(markersGudang, warna.gudang, "Gudang");
-      tambahMarkers(markersKampus, warna.kampus, "Kampus");
+      // Panggil data dari marker.js
+      tambahMarkers(markersMilan, warna.milan, "Milan");
+      tambahMarkers(markersHalim, warna.halim, "Halim");
+      tambahMarkers(markersReyan, warna.reyan, "Reyan");
 
-      function renderLokasiButtons() {
-        const container = document.getElementById("lokasi-buttons");
+      // Total marker
+      const total = markersMilan.length + markersHalim.length + markersReyan.length;
 
-        if (daftarLokasi.length === 0) {
-          container.innerHTML = '<div class="lokasi-empty">Belum ada marker untuk dituju.</div>';
-          return;
-        }
-
-        daftarLokasi.forEach(function (lokasi) {
-          const button = document.createElement("button");
-          button.type = "button";
-          button.className = "lokasi-btn";
-          button.textContent = `${lokasi.nama} (${lokasi.kontributor})`;
-
-          button.addEventListener("click", function () {
-            map.flyTo([lokasi.lat, lokasi.lng], 15, { duration: 1.2 });
-            lokasi.marker.openPopup();
-          });
-
-          container.appendChild(button);
-        });
-      }
-
-      renderLokasiButtons();
-
-      const total = markersDiki.length + markersDayat.length + markersMirdas.length + markersGudang.length + markersKampus.length;
       document.getElementById("total-marker").textContent = total + " lokasi";
 
-      const legend = L.control({ position: "bottomright" });
-      legend.onAdd = function () {
-        const div = L.DomUtil.create("div", "legend");
-        div.innerHTML = `
-      <div class="legend-title">Kontributor</div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background:${warna.Halim}"></div> Halim (${markersHalim.length})
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background:${warna.Reyan}"></div> Reyan (${markersReyan.length})
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background:${warna.Milan}"></div> Milan (${markersMilan.length})
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background:${warna.gudang}"></div> Gudang (${markersGudang.length})
-      </div>
-       <div class="legend-item">
-        <div class="legend-dot" style="background:${warna.kampus}"></div> Kampus (${markersKampus.length})
-      </div>
-    `;
-        return div;
-      };
-      legend.addTo(map);
+      // Tombol navigasi
+      const container = document.getElementById("lokasi-buttons");
+
+      daftarLokasi.forEach((lokasi) => {
+        const btn = document.createElement("button");
+        btn.textContent = lokasi.nama + " (" + lokasi.kontributor + ")";
+        btn.onclick = () => {
+          map.flyTo([lokasi.lat, lokasi.lng], 15);
+          lokasi.marker.openPopup();
+        };
+        container.appendChild(btn);
+      });
     </script>
   </body>
 </html>

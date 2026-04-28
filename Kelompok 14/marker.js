@@ -19,6 +19,13 @@ const markersMilan = [{
     lng: 95.3198,
     deskripsi: "SMP favorit kota",
     kategori: "sekolah"
+  },
+  {
+    nama: "SMKN 1 Banda Aceh",
+    lat: 5.5476,
+    lng: 95.3241,
+    deskripsi: "SMK teknik terbaik",
+    kategori: "sekolah"
   }
 ];
 
@@ -59,6 +66,13 @@ const markersReyan = [{
     lat: 5.546124850282711,
     lng: 95.31595883049734,
     deskripsi: "Tempat santai",
+    kategori: "umum"
+  },
+  {
+    nama: "Pantai Ulee Lheue",
+    lat: 5.5711,
+    lng: 95.2916,
+    deskripsi: "Pantai wisata kota",
     kategori: "umum"
   }
 ];

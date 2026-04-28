@@ -50,7 +50,15 @@ const markersHalim = [{
     lng: 95.3220,
     deskripsi: "Masjid kampus USK",
     kategori: "masjid"
+  },
+  {
+    nama: "Masjid Jamik Unsyiah",
+    lat: 5.5713,
+    lng: 95.3687,
+    deskripsi: "Masjid dalam kampus",
+    kategori: "masjid"
   }
+
 ];
 
 // Reyan (Umum)
@@ -73,6 +81,13 @@ const markersReyan = [{
     lat: 5.5711,
     lng: 95.2916,
     deskripsi: "Pantai wisata kota",
+    kategori: "umum"
+  },
+  {
+    nama: "Taman Putroe Phang",
+    lat: 5.5554,
+    lng: 95.3189,
+    deskripsi: "Taman bersejarah kota",
     kategori: "umum"
   }
 ];

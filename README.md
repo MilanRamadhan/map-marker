@@ -1,21 +1,47 @@
-# Map Marker - Kelompok 14
+# 🗺️ Map Marker - Kelompok 14
 
-Aplikasi sederhana untuk menampilkan lokasi menggunakan Leaflet.
+Aplikasi web interaktif untuk menampilkan dan menavigasi lokasi-lokasi penting di **Banda Aceh** menggunakan peta berbasis Leaflet.js.
 
-## Anggota
+## 👥 Anggota Kelompok 14 Matakuliah Perangkat Lunak Berbasis Komponen
 
 - Milan
 - Halim
 - Reyan
 
-## Fitur
+## ✨ Fitur
 
-- Menampilkan marker lokasi
-- Navigasi ke lokasi
+- 📍 Menampilkan marker lokasi per kategori
+- 🔍 Filter marker berdasarkan kategori (Sekolah / Masjid / Umum)
+- 🧭 Navigasi ke lokasi
 - Pembagian marker per anggota
 
-## Teknologi
+## 🛠️ Teknologi
 
-- HTML
-- CSS
+- HTML5
+- CSS3
 - JavaScript (Leaflet)
+
+## 🚀 Cara Menjalankan
+
+1. Clone repository ini
+
+```bash
+   git clone https://github.com//map-marker.git
+```
+
+2. Masuk ke folder kelompok
+
+```bash
+   cd "Kelompok 14"
+```
+
+3. Buka file `index.html` di browser
+
+## 📁 Struktur File
+
+```
+Kelompok 14/
+├── index.html    # Halaman utama
+├── style.css     # Tampilan & styling
+└── marker.js     # Data lokasi marker
+```

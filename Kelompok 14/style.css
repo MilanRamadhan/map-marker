@@ -121,3 +121,20 @@ button {
 button:hover {
   background: #eee;
 }
+
+.filter-btn {
+  display: inline-block;
+  margin: 3px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  cursor: pointer;
+  background: white;
+}
+
+.filter-btn.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}

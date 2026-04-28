@@ -29,6 +29,13 @@ const markersMilan = [
     deskripsi: "SMK teknik terbaik",
     kategori: "sekolah",
   },
+  {
+    nama: "SDN 1 Banda Aceh",
+    lat: 5.553333510311967,
+    lng: 95.31312869870534,
+    deskripsi: "SD favorit",
+    kategori: "sekolah",
+  },
 ];
 
 // Halim (Masjid)

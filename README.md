@@ -4,9 +4,9 @@ Aplikasi web interaktif untuk menampilkan dan menavigasi lokasi-lokasi penting d
 
 ## 👥 Anggota Kelompok 14 Matakuliah Perangkat Lunak Berbasis Komponen
 
-- Milan
-- Halim
-- Reyan
+- Muhammad Milan Ramadhan Mulizar (2308107010064) as Milan
+- Halim Elsa Putra (2308107010062) as Halim
+- Reyan Andrea (2208107010014) as Reyan
 
 ## ✨ Fitur
 

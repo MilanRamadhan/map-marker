@@ -25,7 +25,7 @@ Aplikasi web interaktif untuk menampilkan dan menavigasi lokasi-lokasi penting d
 1. Clone repository ini
 
 ```bash
-   git clone https://github.com//map-marker.git
+   git clone https://github.com/MilanRamadhan/map-marker.git
 ```
 
 2. Masuk ke folder kelompok

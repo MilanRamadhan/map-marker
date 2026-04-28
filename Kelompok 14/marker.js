@@ -49,6 +49,13 @@ const markersHalim = [
     kategori: "masjid",
   },
   {
+    nama: "Masjid Baitul Mukminin - Lamteh",
+    lat: 5.54877,
+    lng: 95.345,
+    deskripsi: "Masjid di kawasan Lamteh",
+    kategori: "masjid",
+  },
+  {
     nama: "Masjid Al-Furqan",
     lat: 5.5601,
     lng: 95.322,

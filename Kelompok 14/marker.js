@@ -1,6 +1,5 @@
 // Milan (Sekolah)
-const markersMilan = [
-  {
+const markersMilan = [{
     nama: "SMAN 3 Banda Aceh",
     lat: 5.561178506812139,
     lng: 95.33172850612229,
@@ -13,12 +12,18 @@ const markersMilan = [
     lng: 95.31246333897619,
     deskripsi: "Sekolah favorit",
     kategori: "sekolah"
+  },
+  {
+    nama: "SMPN 1 Banda Aceh",
+    lat: 5.5520,
+    lng: 95.3198,
+    deskripsi: "SMP favorit kota",
+    kategori: "sekolah"
   }
 ];
 
 // Halim (Masjid)
-const markersHalim = [
-  {
+const markersHalim = [{
     nama: "Masjid Raya Baiturrahman",
     lat: 5.5537880145676555,
     lng: 95.3176493506125,
@@ -31,12 +36,18 @@ const markersHalim = [
     lng: 95.33878995617626,
     deskripsi: "Masjid modern",
     kategori: "masjid"
+  },
+  {
+    nama: "Masjid Al-Furqan",
+    lat: 5.5601,
+    lng: 95.3220,
+    deskripsi: "Masjid kampus USK",
+    kategori: "masjid"
   }
 ];
 
 // Reyan (Umum)
-const markersReyan = [
-  {
+const markersReyan = [{
     nama: "Museum Tsunami",
     lat: 5.548258458891555,
     lng: 95.31529671384897,

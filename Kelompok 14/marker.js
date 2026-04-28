@@ -1,5 +1,6 @@
 // Milan (Sekolah)
-const markersMilan = [{
+const markersMilan = [
+  {
     nama: "SMAN 3 Banda Aceh",
     lat: 5.561178506812139,
     lng: 95.33172850612229,
@@ -11,31 +12,28 @@ const markersMilan = [{
     lat: 5.551604921721761,
     lng: 95.31246333897619,
     deskripsi: "Sekolah favorit",
-<<<<<<< HEAD
+
     kategori: "sekolah",
-  },
-=======
-    kategori: "sekolah"
   },
   {
     nama: "SMPN 1 Banda Aceh",
-    lat: 5.5520,
+    lat: 5.552,
     lng: 95.3198,
     deskripsi: "SMP favorit kota",
-    kategori: "sekolah"
+    kategori: "sekolah",
   },
   {
     nama: "SMKN 1 Banda Aceh",
     lat: 5.5476,
     lng: 95.3241,
     deskripsi: "SMK teknik terbaik",
-    kategori: "sekolah"
-  }
->>>>>>> a2fae6a3411878ec91c48e4896b617fb79f3d1fd
+    kategori: "sekolah",
+  },
 ];
 
 // Halim (Masjid)
-const markersHalim = [{
+const markersHalim = [
+  {
     nama: "Masjid Raya Baiturrahman",
     lat: 5.5537880145676555,
     lng: 95.3176493506125,
@@ -47,32 +45,28 @@ const markersHalim = [{
     lat: 5.567473980688686,
     lng: 95.33878995617626,
     deskripsi: "Masjid modern",
-<<<<<<< HEAD
+
     kategori: "masjid",
-  },
-=======
-    kategori: "masjid"
   },
   {
     nama: "Masjid Al-Furqan",
     lat: 5.5601,
-    lng: 95.3220,
+    lng: 95.322,
     deskripsi: "Masjid kampus USK",
-    kategori: "masjid"
+    kategori: "masjid",
   },
   {
     nama: "Masjid Jamik Unsyiah",
     lat: 5.5713,
     lng: 95.3687,
     deskripsi: "Masjid dalam kampus",
-    kategori: "masjid"
-  }
-
->>>>>>> a2fae6a3411878ec91c48e4896b617fb79f3d1fd
+    kategori: "masjid",
+  },
 ];
 
 // Reyan (Umum)
-const markersReyan = [{
+const markersReyan = [
+  {
     nama: "Museum Tsunami",
     lat: 5.548258458891555,
     lng: 95.31529671384897,
@@ -84,26 +78,20 @@ const markersReyan = [{
     lat: 5.546124850282711,
     lng: 95.31595883049734,
     deskripsi: "Tempat santai",
-<<<<<<< HEAD
     kategori: "umum",
-  },
-];
-=======
-    kategori: "umum"
   },
   {
     nama: "Pantai Ulee Lheue",
     lat: 5.5711,
     lng: 95.2916,
     deskripsi: "Pantai wisata kota",
-    kategori: "umum"
+    kategori: "umum",
   },
   {
     nama: "Taman Putroe Phang",
     lat: 5.5554,
     lng: 95.3189,
     deskripsi: "Taman bersejarah kota",
-    kategori: "umum"
-  }
+    kategori: "umum",
+  },
 ];
->>>>>>> a2fae6a3411878ec91c48e4896b617fb79f3d1fd

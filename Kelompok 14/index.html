@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="id">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +11,6 @@
   </head>
 
   <body>
-
     <div id="header">
       <h1>Map Marker — Kelompok 14</h1>
       <span id="total-marker">Loading...</span>
@@ -22,7 +20,7 @@
       <div class="lokasi-title">Daftar Lokasi</div>
 
       <!-- Filter buttons -->
-      <div id="filter-buttons" style="margin-bottom: 8px;">
+      <div id="filter-buttons" style="margin-bottom: 8px">
         <button onclick="filterMarker('semua')" class="filter-btn active">Semua</button>
         <button onclick="filterMarker('sekolah')" class="filter-btn">🏫 Sekolah</button>
         <button onclick="filterMarker('masjid')" class="filter-btn">🕌 Masjid</button>
@@ -47,11 +45,13 @@
 
     <script>
       const map = L.map("map", {
-        zoomControl: false
+        zoomControl: false,
       }).setView([5.5483, 95.3238], 13);
-      L.control.zoom({
-        position: 'bottomright'
-      }).addTo(map);
+      L.control
+        .zoom({
+          position: "bottomright",
+        })
+        .addTo(map);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
@@ -76,16 +76,15 @@
           html: `<div class="custom-marker ${bgClass}">${icon}</div>`,
           iconSize: [30, 30],
           iconAnchor: [15, 15],
-          className: ""
+          className: "",
         });
       }
 
       function tambahMarkers(data, nama) {
-        data.forEach(item => {
+        data.forEach((item) => {
           const marker = L.marker([item.lat, item.lng], {
-              icon: buatIkon(item.kategori)
-            }).addTo(map)
-            .bindPopup(`
+            icon: buatIkon(item.kategori),
+          }).addTo(map).bindPopup(`
       <b>${item.nama}</b><br>
       ${item.deskripsi}<br>
       <i>Kategori: ${item.kategori}</i><br>
@@ -95,7 +94,7 @@
           daftarLokasi.push({
             ...item,
             marker,
-            kontributor: nama
+            kontributor: nama,
           });
         });
       }
@@ -106,10 +105,7 @@
       tambahMarkers(markersReyan, "Reyan");
 
       // TOTAL
-      const total =
-        markersMilan.length +
-        markersHalim.length +
-        markersReyan.length;
+      const total = markersMilan.length + markersHalim.length + markersReyan.length;
 
       document.getElementById("total-marker").textContent = total + " lokasi";
 
@@ -128,10 +124,7 @@
 
           // Generate rute menggunakan Leaflet Routing Machine (mirip Google Maps)
           currentRoute = L.Routing.control({
-            waypoints: [
-              L.latLng(userLocation[0], userLocation[1]),
-              L.latLng(latTujuan, lngTujuan)
-            ],
+            waypoints: [L.latLng(userLocation[0], userLocation[1]), L.latLng(latTujuan, lngTujuan)],
             routeWhileDragging: false,
             addWaypoints: false, // Jangan izinkan nambah waypoint dr klik di line
             show: false, // Sembunyikan panel instruksi yang makan ruang
@@ -139,17 +132,19 @@
               return null;
             }, // Matikan marker tambahan otomatis
             lineOptions: {
-              styles: [{
-                color: '#3b82f6',
-                opacity: 0.8,
-                weight: 5
-              }]
-            }
+              styles: [
+                {
+                  color: "#3b82f6",
+                  opacity: 0.8,
+                  weight: 5,
+                },
+              ],
+            },
           }).addTo(map);
         }
       }
 
-      daftarLokasi.forEach(lokasi => {
+      daftarLokasi.forEach((lokasi) => {
         const btn = document.createElement("button");
         btn.textContent = lokasi.nama + " (" + lokasi.kontributor + ")";
         lokasi.btn = btn;
@@ -162,7 +157,7 @@
         };
 
         // Aksi saat marker di peta ditekan
-        lokasi.marker.on('click', () => {
+        lokasi.marker.on("click", () => {
           buatRuteKeLokasi(lokasi.lat, lokasi.lng);
         });
 
@@ -170,37 +165,32 @@
       });
 
       // LOKASI SAYA
-      navigator.geolocation.getCurrentPosition(pos => {
+      navigator.geolocation.getCurrentPosition((pos) => {
         const lat = pos.coords.latitude;
         const lng = pos.coords.longitude;
         userLocation = [lat, lng];
 
-        L.marker(userLocation)
-          .addTo(map)
-          .bindPopup("📍 Lokasi Saya")
-          .openPopup();
+        L.marker(userLocation).addTo(map).bindPopup("📍 Lokasi Saya").openPopup();
       });
 
       function filterMarker(kategori) {
         // Update tombol aktif
-        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        document.querySelectorAll(".filter-btn").forEach((btn) => btn.classList.remove("active"));
+        event.target.classList.add("active");
 
         // Tampil/sembunyiin marker & button
-        daftarLokasi.forEach(lokasi => {
-          const cocok = kategori === 'semua' || lokasi.kategori === kategori;
+        daftarLokasi.forEach((lokasi) => {
+          const cocok = kategori === "semua" || lokasi.kategori === kategori;
 
           if (cocok) {
             map.addLayer(lokasi.marker);
-            lokasi.btn.style.display = 'block';
+            lokasi.btn.style.display = "block";
           } else {
             map.removeLayer(lokasi.marker);
-            lokasi.btn.style.display = 'none';
+            lokasi.btn.style.display = "none";
           }
         });
-      };
+      }
     </script>
-
   </body>
-
 </html>

@@ -13,7 +13,6 @@ Aplikasi web interaktif untuk menampilkan dan menavigasi lokasi-lokasi penting d
 - 📍 Menampilkan marker lokasi per kategori
 - 🔍 Filter marker berdasarkan kategori (Sekolah / Masjid / Umum)
 - 🧭 Navigasi ke lokasi
-- Pembagian marker per anggota
 
 ## 🛠️ Teknologi
 
